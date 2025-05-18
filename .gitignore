@@ -1,1 +1,11 @@
+# Binaries
+**/bin/
+bin-int/
+Intermediates/
+
+
+#visual studio files
 .vs
+
+#files
+*.user
