@@ -2,10 +2,12 @@
 
 #ifdef GE_PLATFORM_WINDOWS
 	#ifdef GE_BUILD_DLL
-		#define GAMEENGINE_API __declspec(dllexport)
+		#define ENGINE_API __declspec(dllexport)
 	#else
-		#define GAMEENGINE_API __declspec(dllimport)
+		#define ENGINE_API __declspec(dllimport)
 	#endif
 #else
 	#error engine only support windows!
-#endif // HZ_BUILD_DLL
+#endif // GE_BUILD_DLL
+
+#define BIT(x) (1 << x)
