@@ -10,7 +10,7 @@ namespace GameEngine {
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
 
-		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput);
+		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keycode) 
 			: m_KeyCode(keycode) {}
@@ -30,7 +30,7 @@ namespace GameEngine {
 			ss << "KeyPressedEvent:" << m_KeyCode << " (" << m_RepeatCount << " repeats)";
 		}
 
-		EVENT_CLASS_TYPE(KeyPressed);
+		EVENT_CLASS_TYPE(KeyPressed)
 	protected:
 		int m_RepeatCount;
 	};
@@ -45,6 +45,6 @@ namespace GameEngine {
 			ss << "KeyReleasedEvent:" << m_KeyCode;
 		}
 
-		EVENT_CLASS_TYPE(KeyReleased);
+		EVENT_CLASS_TYPE(KeyReleased)
 	};
 }

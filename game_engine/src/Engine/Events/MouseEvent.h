@@ -19,8 +19,8 @@ namespace GameEngine {
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(MouseMoved);
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
+		EVENT_CLASS_TYPE(MouseMoved)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_MouseX, m_MouseY;
 	};
@@ -40,9 +40,50 @@ namespace GameEngine {
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(MouseScrolled);
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
+		EVENT_CLASS_TYPE(MouseScrolled)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
 		float m_XOffset, m_YOffset;
+	};
+
+	class ENGINE_API MouseButtonEvent : public Event {
+	public:
+		inline float GetMouseButton() const { return m_Button; }
+
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+	protected:
+		MouseButtonEvent(int button)
+			: m_Button(button) {}
+
+		float m_Button;
+	};
+
+	class ENGINE_API MouseButtonPressedEvent : public MouseButtonEvent {
+	public:
+		MouseButtonPressedEvent(int button)
+			: MouseButtonEvent(button) {}
+
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "MouseButtonPressedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonPressed)
+	};
+
+	class ENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent {
+	public:
+		MouseButtonReleasedEvent(int button)
+			: MouseButtonEvent(button) {
+		}
+
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "MouseButtonReleasedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonRelease)
 	};
 }
