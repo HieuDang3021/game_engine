@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace GameEngine {
 
 	class ENGINE_API WindowResizeEvent : public Event {

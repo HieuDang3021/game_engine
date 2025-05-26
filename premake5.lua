@@ -17,6 +17,9 @@ project "game_engine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
+	pchheader "gepch.h"
+	pchsource "game_engine/src/gepch.cpp"
+	
 	files{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
@@ -24,7 +27,7 @@ project "game_engine"
 	
 	includedirs{
 		"%{prj.name}/vendor/spdlog/include",
-		"game_engine/src"
+		"%{prj.name}/src"
 	}
 	
 	filter "system:windows"
