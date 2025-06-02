@@ -46,14 +46,14 @@ namespace GameEngine {
 
 	class ENGINE_API MouseButtonEvent : public Event {
 	public:
-		inline float GetMouseButton() const { return m_Button; }
+		inline int GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
 		MouseButtonEvent(int button)
 			: m_Button(button) {}
 
-		float m_Button;
+		int m_Button;
 	};
 
 	class ENGINE_API MouseButtonPressedEvent : public MouseButtonEvent {
