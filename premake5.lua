@@ -12,8 +12,10 @@ outputdir = "%{cfg.buidcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relate to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "game_engine/vendor/GLFW/include"
+IncludeDir["Glad"] = "game_engine/vendor/Glad/include"
 
 include "game_engine/vendor/GLFW"
+include "game_engine/vendor/Glad"
 	
 project "game_engine"
 	location "game_engine"
@@ -34,11 +36,13 @@ project "game_engine"
 	includedirs{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
 	}
 	
 	links{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 	
@@ -49,7 +53,8 @@ project "game_engine"
 		
 		defines{
 			"GE_PLATFORM_WINDOWS",
-			"GE_BUILD_DLL"
+			"GE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 		
 		postbuildcommands{
@@ -58,14 +63,17 @@ project "game_engine"
 		
 	filter "configurations:Debug"
 		defines "GE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "GE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines "GE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 		
 	filter "action:vs*"
@@ -104,14 +112,17 @@ project "Sandbox"
 		
 	filter "configurations:Debug"
 		defines "GE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "GE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines "GE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 		
 	filter "action:vs*"
