@@ -1,3 +1,4 @@
+##Visual Studio
 # Binaries
 **/bin/
 bin-int/
@@ -9,6 +10,9 @@ Intermediates/
 
 #files
 *.user
+*.vcxproj*
+*.sln
 
+##VS Code
 #Cmkae build folder
 build/
