@@ -9,3 +9,6 @@ Intermediates/
 
 #files
 *.user
+
+#Cmkae build folder
+build/
